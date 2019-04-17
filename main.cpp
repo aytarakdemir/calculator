@@ -34,7 +34,7 @@ PostfixConverter::PostfixConverter(std::string input)
 bool PostfixConverter::checkParantheses()
 {
     std::stack <char> parant_stack;
-    for (int i = 0; i < postfix.length(); i++)
+    for (size_t i = 0; i < postfix.length(); i++)
     {
         if (postfix[i] == '(')
         {
@@ -52,13 +52,12 @@ bool PostfixConverter::checkParantheses()
 /** Checks if the characters are valid and there aren't any '[digit](',
    ')[digit]', '[operator])' or '([operator]' strings in the input.
  *  Problem: Long ass regex
- *  Problem: You cannot write in the form (-[digit])
- * 
+ *
  */
 bool PostfixConverter::checkCharacters()
 {
     std::regex reg1("([[:d:]]|\\(|\\)|\\+|-|/|\\*)*([[:d:]]\\(|\\)[[:d:]]|"
-    "(\\+|-|\\*|/)\\)|\\((\\+|-|\\*|/)|(\\+|-|\\*|/)(\\+|-|\\*|/))([[:d:]]"
+    "(\\+|-|\\*|/)\\)|\\((\\*|/)|(\\+|-|\\*|/)(\\+|-|\\*|/))([[:d:]]"
     "|\\(|\\)|\\+|-|/|\\*)*");
     if (regex_match(postfix, reg1)) return false;
 
@@ -75,11 +74,21 @@ class DoOperation
 
 int main()
 {
+    std::cout << "##Equation Calculator##"
+              << std::endl << "Equation: ";
+
     std::string input;
-    std::getline(std::cin, input);
+    do
+    {
+        std::getline(std::cin, input);
+        PostfixConverter convert(input);
+        if (convert.checkCharacters() && convert.checkParantheses())
+        {
 
+        }
+        else std::cout << "Equation is not in the valid form." << std::endl;
+    } while  (input != "q");
 
-    PostfixConverter convert(input);
-    std::cout << convert.checkParantheses() << std::endl;
-    std::cout << convert.checkCharacters();
+    std::cout << "Terminating";
+    return 0;
 }
