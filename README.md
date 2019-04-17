@@ -2,10 +2,10 @@
 Equation Calculator
 1. Take string input
 2. Convert infix to postfix
-   a. Check the parantheses
-   b. Check the characters
-   c. ???
-   d. Profit
+   1. Check the parantheses
+   2. Check the characters
+   3. ???
+   4. Profit
 3. Do the postfix operation
  
 
