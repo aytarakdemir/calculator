@@ -10,17 +10,11 @@ class PostfixConverter
 {
     std::string postfix;
 public:
-    PostfixConverter(std::string);
+    PostfixConverter(std::string input):postfix(input){}
     bool checkParantheses();
     bool checkCharacters();
-    bool doConversion();
+    std::string doConversion();
 };
-
-PostfixConverter::PostfixConverter(std::string input)
-{
-    postfix = input;
-}
-
 
 // Checks if the parantheses are in the correct order.
 bool PostfixConverter::checkParantheses()
@@ -60,12 +54,10 @@ bool PostfixConverter::checkCharacters()
 }
 
 
-/* Converts infix to postfix.
- * TODO: Return value should be string.
- * TODO: 2*(4+5)+2 example operation, there is no '*'. Fix it.
- *
+/* Converts infix to postfix
+   Returns a string of postfix
  */
-bool PostfixConverter::doConversion()
+std::string PostfixConverter::doConversion()
 {
     std::string out;
     std::stack <char> oper;
@@ -112,8 +104,7 @@ bool PostfixConverter::doConversion()
     {
         out.push_back(oper.top());
         oper.pop();
-        std::cout << out;
-        return true;
+        return out;
     }
 }
 

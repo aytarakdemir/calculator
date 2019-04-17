@@ -4,6 +4,7 @@
 #include <stack>
 
 #include "PostfixConverter.h"
+#include "DoOperation.h"
 
 /** 1. Take string input
  *  2. Convert infix to postfix
@@ -11,13 +12,15 @@
  *     b. Check the characters
  *     c. ???
  *     d. Profit
- *  3. Do the operation
+ *  3. Do the postfix operation
  *
  *
- * class for converting infix->postfix
- * class for doing the operation
+ * Right now it can only perform '+,-,/,*' operations.
+ * Write any operation using parantheses and it244
+ * prints the result.
+ * TODO: Only accepts numbers between 0 - 9.
+ *       For example, 25 is interpreted as 2 and 5. Fix it
  */
-
 
 int main()
 {
@@ -31,11 +34,12 @@ int main()
         PostfixConverter convert(input);
         if (convert.checkCharacters() && convert.checkParantheses())
         {
-            convert.doConversion();
+            DoOperation final(convert.doConversion());
+            final.perform();
         }
+        else if (input == "q") std::cout << "Terminating";
         else std::cout << "Equation is not in the valid form." << std::endl;
     } while  (input != "q");
 
-    std::cout << "Terminating";
     return 0;
 }
