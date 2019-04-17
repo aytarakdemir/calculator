@@ -66,6 +66,58 @@ bool PostfixConverter::checkCharacters()
     else                            return false;
 }
 
+/* Converts infix to postfix.
+ * TODO: Return value should be string.
+ * TODO: 2*(4+5)+2 example operation, there is no '*'. Fix it.
+ *
+ */
+bool PostfixConverter::doConversion()
+{
+    std::string out;
+    std::stack <char> oper;
+
+    for (size_t i = 0; i < postfix.length(); i++)
+    {
+        if (postfix[i] >= 48 && postfix[i] <= 57)
+        {
+            out.push_back(postfix[i]);
+        }
+        if (postfix[i] == '+' ||
+            postfix[i] == '-' ||
+            postfix[i] == '(')
+        {
+            oper.push(postfix[i]);
+        }
+        if (postfix[i] == '*' ||
+            postfix[i] == '/')
+        {
+            oper.push(postfix[i]);
+            if (postfix[i + 1] != '(')
+            {
+                i++;
+                out.push_back(postfix[i]);
+                out.push_back(oper.top());
+                oper.pop();
+            }
+        }
+        if (postfix[i] == ')')
+        {
+            while (oper.top() != '(')
+            {
+                out.push_back(oper.top());
+                oper.pop();
+            }
+            oper.pop();
+        }
+    }
+    while (!oper.empty())
+    {
+        out.push_back(oper.top());
+        oper.pop();
+        std::cout << out;
+        return true;
+    }
+}
 
 class DoOperation
 {
@@ -84,7 +136,7 @@ int main()
         PostfixConverter convert(input);
         if (convert.checkCharacters() && convert.checkParantheses())
         {
-
+            convert.doConversion();
         }
         else std::cout << "Equation is not in the valid form." << std::endl;
     } while  (input != "q");
