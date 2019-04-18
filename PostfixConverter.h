@@ -104,7 +104,6 @@ std::string PostfixConverter::doConversion()
     {
         out.push_back(oper.top());
         oper.pop();
-        return out;
     }
     return out;
 }

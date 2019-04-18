@@ -15,6 +15,7 @@ void DoOperation::perform()
 {
     // TODO: Fix code repeat.
     // TODO: Performs opeartions on chars, cast them to ints.
+    // Problem: 1+3*2+1 returns 17
     for (size_t i = 0; i < postfix.length(); i++)
     {
         int temp;

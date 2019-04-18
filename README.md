@@ -7,9 +7,11 @@ Equation Calculator
    3. ???
    4. Profit
 3. Do the postfix operation
- 
+
 
 Right now it can only perform '+,-,/,*' operations.
 Write any operation using parantheses and it prints the result.
 
 TODO: Exponential operation
+TODO: Doesn't work for more than one digits. Fix it.
+TODO: Doesn't work for negative numbers 

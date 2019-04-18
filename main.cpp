@@ -31,7 +31,7 @@ int main()
     do
     {
         std::getline(std::cin, input);
-        PostfixConverter convert(input);
+        PostfixConverter convert(input);1+3*1
         if (convert.checkCharacters() && convert.checkParantheses())
         {
             DoOperation final(convert.doConversion());
