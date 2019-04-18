@@ -106,6 +106,7 @@ std::string PostfixConverter::doConversion()
         oper.pop();
         return out;
     }
+    return out;
 }
 
 #endif

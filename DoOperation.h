@@ -20,30 +20,30 @@ void DoOperation::perform()
         int temp;
         if (postfix[i] == '+')
         {
-            temp = postfix[i - 2] + postfix[i - 1];
+            temp = (postfix[i - 2] - '0') + (postfix[i - 1] - '0');
             postfix.erase(i - 2, 3);
-            postfix.insert(i - 2, 1, temp);
+            postfix.insert(i - 2, 1, temp + '0');
             i = i - 2;
         }
         if (postfix[i] == '-')
         {
-            temp = postfix[i - 2] - postfix[i - 1];
+            temp = (postfix[i - 2] - '0') - (postfix[i - 1] - '0');
             postfix.erase(i - 2, 3);
-            postfix.insert(i - 2, 1, temp);
+            postfix.insert(i - 2, 1, temp + '0');
             i = i - 2;
         }
         if (postfix[i] == '*')
         {
-            temp = postfix[i - 2] * postfix[i - 1];
+            temp = (postfix[i - 2] - '0') * (postfix[i - 1] - '0');
             postfix.erase(i - 2, 3);
-            postfix.insert(i - 2, 1, temp);
+            postfix.insert(i - 2, 1, temp + '0');
             i = i - 2;
         }
         if (postfix[i] == '/')
         {
-            temp = postfix[i - 2] / postfix[i - 1];
+            temp = (postfix[i - 2] - '0') / (postfix[i - 1] - '0');
             postfix.erase(i - 2, 3);
-            postfix.insert(i - 2, 1, temp);
+            postfix.insert(i - 2, 1, temp + '0');
             i = i - 2;
         }
     }
