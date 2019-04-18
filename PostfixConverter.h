@@ -82,7 +82,6 @@ std::string PostfixConverter::doConversion()
             {
                 i++;
                 out.push_back(postfix[i]);
-                out.push_back(oper.top());
                 oper.pop();
             }
             else
@@ -92,7 +91,7 @@ std::string PostfixConverter::doConversion()
         }
         if (postfix[i] == ')')
         {
-            while (oper.top() != '(')
+            while (oper.top() != '(') //8-(9/(9/3))+(5-3)+1
             {
                 out.push_back(oper.top());
                 oper.pop();

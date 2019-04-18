@@ -20,6 +20,7 @@
  * prints the result.
  * TODO: Only accepts numbers between 0 - 9.
  *       For example, 25 is interpreted as 2 and 5. Fix it
+ *  ****#####8-(9/(9/3))+(5-3)+1#####****
  */
 
 int main()
@@ -31,10 +32,11 @@ int main()
     do
     {
         std::getline(std::cin, input);
-        PostfixConverter convert(input);1+3*1
+        PostfixConverter convert(input);
         if (convert.checkCharacters() && convert.checkParantheses())
         {
             DoOperation final(convert.doConversion());
+            std::cout << convert.doConversion() << " - ";
             final.perform();
         }
         else if (input == "q") std::cout << "Terminating";
